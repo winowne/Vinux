@@ -47,6 +47,11 @@ class HistoryScreen(Screen):
                 option_list.add_option(Option(label, id=f.name))
             option_list.focus()
 
+    def on_option_list_option_selected(self, event: OptionList.OptionSelected) -> None:
+        session_file = event.option_id
+        session_path = str(SESSIONS_DIR / session_file)
+        self.app.push_screen(ChatScreen(session_path=session_path))
+
     def on_click(self, event: events.Click) -> None:
         if not event.widget:
             return
