@@ -19,11 +19,24 @@ class Config:
     
     @classmethod
     def get_os_name(cls) -> str:
-        try:
-            info = platform.freedesktop_os_release()
-            return info.get("NAME", "Linux")
-        except AttributeError:
-            return platform.system()
+        system = platform.system()
+        if system == "Linux":
+            try:
+                info = platform.freedesktop_os_release()
+                return info.get("NAME", "Linux")
+            except AttributeError:
+                return "Linux"
+        elif system == "Darwin":
+            ver = platform.mac_ver()[0]
+            return f"macOS {ver}" if ver else "macOS"
+        elif system == "Windows":
+            release = platform.release()
+            version = platform.version()
+            if release == "10" and version.startswith("10.0.22"):
+                return "Windows 11"
+            return f"Windows {release}"
+        else:
+            return system
         
     @staticmethod
     def get_version():
