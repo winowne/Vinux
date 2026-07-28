@@ -28,7 +28,7 @@ class StartChatScreen(Screen):
 
     def compose(self) -> ComposeResult:
         yield Static("", id="suggestions-box")
-        yield Mascot(maskot, id="mascot")
+        #yield Mascot(maskot, id="mascot")
         yield StartInput(placeholder='Введите ваш запрос здесь...', id="user_input")
         
 
