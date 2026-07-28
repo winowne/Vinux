@@ -1,12 +1,5 @@
-$primary: #0178d4;
-$background: #1d1d20;
-$text: #f5f5f4;
-$error: #ff3139;
-$warning: #ffec00;
-$success: #00e615;
-
 StartChatScreen {
-    background: $background;
+    background: $bg_color;
     align: center middle; 
 }
 
@@ -17,8 +10,8 @@ StartChatScreen {
 }
 
 #suggestions-box {
-    border: solid $primary;
-    color: $text;
+    border: solid $primary_color;
+    color: $text_light;
     width: 100%;
     height: auto;
     max-height: 5;
@@ -27,7 +20,7 @@ StartChatScreen {
 }
 
 #user_input {
-    border: round $primary;
+    border: round $primary_color;
     width: 100%;
     height: auto;
     margin-top: 0;    
@@ -35,7 +28,7 @@ StartChatScreen {
 }
 
 #mascot {
-    color: $primary; 
+    color: $primary_color; 
     height: auto;
     margin-bottom: 1;
     text-align: center;

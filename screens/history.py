@@ -11,8 +11,14 @@ from textual.containers import Horizontal
 
 SESSIONS_DIR = Path("session")
 
+_STYLES = Path(__file__).resolve().parent.parent / "styles"
+
+def _css(*names):
+    return "\n".join((_STYLES / n).read_text(encoding="utf-8") for n in names)
+
+
 class HistoryScreen(Screen):
-    CSS_PATH = "../styles/history.css"
+    CSS = _css("variables.tcss", "history.tcss")
 
     def compose(self) -> ComposeResult:
         yield Static("История сессий", id="title")

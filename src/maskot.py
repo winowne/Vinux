@@ -4,13 +4,11 @@ from textual.widgets import Static
 from textual.events import MouseDown
 
 maskot = '''
- █    
- █   █
- █████
- █ █ █
-███████
- █████
- █   █
+  ▌    
+  ▌   ▐
+  █▜█▛█
+ ▘█████▝
+  ▘   ▝
 '''
 
 class Mascot(Static):

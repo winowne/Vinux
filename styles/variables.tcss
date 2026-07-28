@@ -1,0 +1,8 @@
+$bg_color: #1d1d20;
+$primary_color: #0178d4;
+$text_light: #f5f5f4;
+$error: #ff3139;
+$warning: #ffec00;
+$success: #00e615;
+$primary_light: #4d9fe3;
+$primary_dark: #0166b3;

@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 from textual.app import App
 from textual.widgets import Static, OptionList
 from textual.containers import Horizontal, Vertical
@@ -11,6 +12,11 @@ from screens.start import StartChatScreen
 from screens.history import HistoryScreen
 
 import src.generator_for_r1 as gen
+
+_STYLES = Path(__file__).parent / "styles"
+
+def _css(*names):
+    return "\n".join((_STYLES / n).read_text(encoding="utf-8") for n in names)
 
 
 class Poloska(Static):
@@ -33,7 +39,7 @@ class LoadProgress(Static):
         return f"[bold #0178d4]{'█' * filled}[/][bold white]{'█' * empty}[/]"
 
 class MainMenu(App):
-    CSS_PATH = 'styles/main.css'
+    CSS = _css("variables.tcss", "main.tcss")
 
     def compose(self):
         

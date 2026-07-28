@@ -1,9 +1,16 @@
+from pathlib import Path
 from textual.screen import Screen
 from textual.app import ComposeResult
 from textual.widgets import TextArea, Static
 from textual.events import Key
 from screens.chat import ChatScreen
 from src.maskot import Mascot, maskot
+
+_STYLES = Path(__file__).resolve().parent.parent / "styles"
+
+def _css(*names):
+    return "\n".join((_STYLES / n).read_text(encoding="utf-8") for n in names)
+
 
 class StartInput(TextArea):
     def on_key(self, event: Key) -> None:
@@ -24,11 +31,11 @@ class StartInput(TextArea):
             self.insert_text("\n")
 
 class StartChatScreen(Screen):
-    CSS_PATH = "../styles/start.css"
+    CSS = _css("variables.tcss", "start.tcss")
 
     def compose(self) -> ComposeResult:
         yield Static("", id="suggestions-box")
-        #yield Mascot(maskot, id="mascot")
+        yield Mascot(maskot, id="mascot")
         yield StartInput(placeholder='Введите ваш запрос здесь...', id="user_input")
         
 

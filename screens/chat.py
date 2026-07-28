@@ -11,6 +11,11 @@ import src.generator_for_r1 as gen
 from rich.text import Text
 import torch
 
+_STYLES = Path(__file__).resolve().parent.parent / "styles"
+
+def _css(*names):
+    return "\n".join((_STYLES / n).read_text(encoding="utf-8") for n in names)
+
 SESSIONS_DIR = Path("session")
 
 class ChatInput(TextArea):
@@ -32,7 +37,7 @@ class ChatInput(TextArea):
 
 
 class ChatScreen(Screen):
-    CSS_PATH = "../styles/chat.css"
+    CSS = _css("variables.tcss", "chat.tcss")
 
     def __init__(self, initial_message: str = None, session_path: str = None) -> None:
         super().__init__()
